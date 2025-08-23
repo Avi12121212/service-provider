@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'new.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'avinash_db',
+        'NAME': 'avinashnew_db',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

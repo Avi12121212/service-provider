@@ -29,7 +29,7 @@ class User(models.Model):
     password = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.user_id,self.location,self.name,self.mobile,self.email}"
+        return f"{self.user_id,self.location,self.name,self.mobile,self.email,self.role_id}"
 
 
 class ServiceCategory(models.Model):
@@ -39,6 +39,19 @@ class ServiceCategory(models.Model):
 
     def __str__(self):
         return f"{self.category_id,self.category_name,self.description}"
+
+
+class Worker(models.Model):
+    worker_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=150)
+    email = models.EmailField(unique=True)
+    mobile = models.CharField(max_length=20, blank=True, null=True)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    category_id = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE)
+    rate_of_worker= models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.worker_id,self.name,self.email,self.mobile,self.location,self.category_id}"        
 
 
     

@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    {{user}}
-    
-    <b>this is dashboard</b><br><br>
+  </head>
+  <body>
+    <form action="/app/main" method="get">
+      <div style="color: red">
+        <b>this is dashboard</b>
+      </div>
+      {{user}}
+      <!-- {{data1}} this  ## this is for worker data -->
+      <!-- {{data}} -->
+      <div>
+        <div style="float: left">
+          <select name="category" id="">
+            <option value="" disabled selected>---service---</option>
+            {% for item in data %}
+            <option value="{{item.category_id}}">{{item.category_name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div style="float: left">
+          <select name="location" id="">
+            <option value="" disabled selected>---location---</option>
+            {% for item in location %}
+            <option value="{{item.location_id}}">{{item.location_name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <input type="submit" value="search" />
+      </div>
+      <div>
+        {% for i in data1 %}
+        <div style="border:1px dashed black; margin:10px; padding:10px;">
+          <p>name: {{i.name}}</p>
+          <p>email: {{i.email}}</p>
+          <p>mobile: {{i.mobile}}</p>
+          <p>location: {{i.location_id.location_name}}</p>
+          <p>category: {{i.category_id.category_name}}</p>
+          <p>rate:{{i.rate_of_worker}}</p>
+        </div>
+        {%endfor%}
+
+      
+    </form>
 
     <a href="http://127.0.0.1:8000/app/logout/"><button>logout</button></a>
-</body>
+  </body>
 </html>
