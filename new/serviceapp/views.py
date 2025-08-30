@@ -59,8 +59,9 @@ def main(request):
     return render(request,"dashboard.html",{"user": email, "data1":data1})
 
 def logout(request):
-    # try:
-    #     del request.session["email"]
-    # except KeyError:
-    #     pass
-    return HttpResponse("You have been logged out successfully")  # Redirect to a logout success page or home page
+    try:
+        del request.session["email"]
+    except KeyError:
+        pass
+    return HttpResponse("You have been logged out successfully")
+    # return HttpResponse("You have been logged out successfully")  # Redirect to a logout success page or home page
